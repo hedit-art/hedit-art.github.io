@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>image series: some zone</title>
+</head>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: rgb(255, 224, 250);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 26px;
+    text-shadow: 
+        -2px -2px 2px #000,  
+         2px -2px 2px #000,
+        -2px  2px 2px #000,
+         2px  2px 2px #000,
+         0px  0px 8px #000;
+}
+t1, t2, pre, panel1, panel2, panel3, panel4 {
+    display: block;
+}
+a {
+    background-color: white;
+    color: blue;
+    padding: 0 4px;
+    text-decoration: none;
+    text-shadow: none;
+}
+.panel1, .panel2, .panel3, .panel4 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.panel1 { background-image: url("assets/some_zone/bgbricks1.png"); }
+.panel2 { background-image: url("assets/some_zone/bgbricks2.png"); }
+.panel3 { background-image: url("assets/some_zone/bgbricks3.png"); }
+.panel4 { background-image: url("assets/some_zone/bgbricks4.png"); }
+.image, .video {
+    border: 12px solid white;
+    max-width: 90%;
+    height: auto;
+    box-shadow: 10px 10px 0px rgb(29, 24, 64);
+}
+
+/* 2dgrid setup */
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    width: 100vw;/* Entire page width */
+    column-gap: 0;/* No gap between columns */
+    row-gap: 40px;/* Space between rows */
+}
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;/* Center content in the column */
+}
+.grid-item img {
+    width: 80%;/* Adjust this to make images smaller/larger */
+    aspect-ratio: 4 / 3;/* Keeps all images the same shape */
+    background: #330022;/* Placeholder black color */
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.25s;
+}
+.grid-item img:hover {
+    transform: scale(1.05);
+}
+
+/* fullscreen style */
+#fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+#fullscreen-img {
+    max-width: 90%;
+    max-height: 80%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+</style>
+
+// fullscreen overlay init
+<div id="fullscreen-overlay" onclick="closeFullscreen()">
+    <img id="fullscreen-img" src="">
+    <p>click or press esc to close.</p>
+</div>
+
+<body>
+    <h1>some zone</h1>
+    <pre>witness the oddities</pre>
+
+    // ==============
+    // SHOWCASE START
+    // ==============
+    <section class="panel1">
+        <div class="image-grid">
+            <div class="grid-item">
+                <img src="assets/some_zone/mist mist mist.png" onclick="openFullscreen(this)">
+                <t2>mist mist mist</t2>
+            </div>
+            <div class="grid-item">
+                <img src="assets/some_zone/untitled 4.png" onclick="openFullscreen(this)">
+                <t2>untitled 4</t2>
+            </div>
+            <div class="grid-item">
+                <img src="assets/some_zone/cupid.png" onclick="openFullscreen(this)">
+                <t2>cupid</t2>
+            </div>
+            <div class="grid-item">
+                <img src="assets/some_zone/emonclew.png" onclick="openFullscreen(this)">
+                <t2>emonclew</t2>
+            </div>
+        </div>
+    </section>
+    
+    <section class="panel2">
+        <div class="image-grid">
+            <div class="grid-item">
+                <img src="assets/some_zone/crabcables.png" onclick="openFullscreen(this)">
+                <t2>crabcables</t2>
+            </div>
+            <div class="grid-item">
+                <img src="assets/some_zone/headshot.png" onclick="openFullscreen(this)">
+                <t2>headshot</t2>
+            </div>
+            <div class="grid-item">
+                <img src="assets/some_zone/shy.png" onclick="openFullscreen(this)">
+                <t2>shy</t2>
+            </div>
+            <div class="grid-item">
+                <img src="assets/some_zone/where.png" onclick="openFullscreen(this)">
+                <t2>where</t2>
+            </div>
+        </div>
+    </section>
+  
+    // ====================
+    // FINAL LINKS SECTION
+    // ====================
+    <h2>links</h2>
+    <ul>
+        <li><a href="index.html">homepage</a></li>
+        <li><a href="myart.html">currently showcased works</a></li>
+        <li><a href="about.html">about hedit</a></li>
+        <li><a href="sheen worship.html">sheen worship page</a></li>
+    </ul>
+
+// =======================
+// SCRIPT FOR FUILLSTCREEN
+// =======================
+<script>
+const overlay = document.getElementById('fullscreen-overlay');
+const fullImg = document.getElementById('fullscreen-img');
+function openFullscreen(imgElement) {
+    overlay.style.display = 'flex';
+    fullImg.src = imgElement.src;
+}
+function closeFullscreen() {
+    overlay.style.display = 'none';
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+        closeFullscreen();
+    }
+});
+</script>
+
+</body>
+</html>
